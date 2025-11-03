@@ -1,1 +1,110 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Практические занятия 19-20 - JavaScript основы</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Практические занятия 19-20</h1>
+            <h2>Основы работы с переменными, условными операторами, циклами, массивами и функциями в JavaScript</h2>
+        </header>
 
+        <main>
+            <section class="task-section">
+                <h3>Задание 1: Объявление переменных и условные операторы</h3>
+                <div class="code-block">
+                    <pre><code>// 1. Создание переменных
+let userName = "Алексей";
+let userAge = 20;
+
+// 2. Проверка возраста
+if (userAge >= 18) {
+    console.log("Вы совершеннолетний");
+} else {
+    console.log("Вы несовершеннолетний");
+}</code></pre>
+                </div>
+                <button onclick="runTask1()">Выполнить задание 1</button>
+                <div id="result1" class="result"></div>
+            </section>
+
+            <section class="task-section">
+                <h3>Задание 2: Циклы</h3>
+                <div class="code-block">
+                    <pre><code>// 1. Цикл for от 1 до 10
+console.log("Цикл for от 1 до 10:");
+for (let i = 1; i <= 10; i++) {
+    console.log(i);
+}
+
+// 2. Цикл while от 10 до 1
+console.log("Цикл while от 10 до 1:");
+let j = 10;
+while (j >= 1) {
+    console.log(j);
+    j--;
+}</code></pre>
+                </div>
+                <button onclick="runTask2()">Выполнить задание 2</button>
+                <div id="result2" class="result"></div>
+            </section>
+
+            <section class="task-section">
+                <h3>Задание 3: Работа с массивами</h3>
+                <div class="code-block">
+                    <pre><code>// 1. Создание массивов
+const lectures = ['Тема 1', 'Тема 2', 'Тема 3'];
+const practices = ['Практика 1', 'Практика 2', 'Практика 3'];
+
+// 2. Добавление новых элементов
+lectures.push('Тема 4');
+practices.unshift('Практика 0');
+
+// 3. Вывод с помощью forEach
+console.log("Темы лекций:");
+lectures.forEach(lecture => console.log(lecture));
+
+console.log("Практики:");
+practices.forEach(practice => console.log(practice));
+
+// 4. Функция для вывода массива в строку
+function arrayToString(arr) {
+    return arr.join(', ');
+}</code></pre>
+                </div>
+                <button onclick="runTask3()">Выполнить задание 3</button>
+                <div id="result3" class="result"></div>
+            </section>
+
+            <section class="task-section">
+                <h3>Задание 4: Манипуляции с массивами</h3>
+                <div class="code-block">
+                    <pre><code>// 1. Функция для фильтрации тем, начинающихся на "О"
+function filterTopicsStartingWithO(topics) {
+    return topics.filter(topic => topic.startsWith('О'));
+}
+
+// 2. Пример использования
+const lectureTopics = ['Основы HTML', 'Основы CSS', 'JavaScript', 'ООП', 'React'];
+const filteredTopics = filterTopicsStartingWithO(lectureTopics);
+console.log("Темы, начинающиеся с 'О':", filteredTopics);</code></pre>
+                </div>
+                <button onclick="runTask4()">Выполнить задание 4</button>
+                <div id="result4" class="result"></div>
+            </section>
+        </main>
+
+        <footer>
+            <p>Дисциплина: Фронтенд и бэкенд разработка</p>
+            <p>Преподаватель: Загородних Николай Анатольевич</p>
+            <p>Семестр: 1 семестр, 2025/2026 уч. год</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
