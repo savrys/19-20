@@ -1,146 +1,174 @@
-// Задание 1: Объявление переменных и условные операторы
-function runTask1() {
-    // Очистка предыдущего результата
-    document.getElementById('result1').innerHTML = '';
+// Функция для выполнения всех заданий
+function runAllTasks() {
+    console.clear();
+    console.log("🎯 ВЫПОЛНЕНИЕ ПРАКТИЧЕСКИХ ЗАДАНИЙ 19-20\n");
     
-    // 1. Создание переменных
-    let userName = "Алексей";
-    let userAge = 20;
+    task1();
+    task2();
+    task3();
+    task4();
+    
+    alert("Все задания выполнены! Проверьте консоль браузера (F12)");
+}
+
+// Задание 1: Объявление переменных и условные операторы
+function task1() {
+    console.log("=== ЗАДАНИЕ 1 ===");
+    
+    // 1. Объявление переменных
+    const myName = "Анна";
+    const myAge = 20;
     
     // 2. Проверка возраста
-    let message;
-    if (userAge >= 18) {
-        message = "Вы совершеннолетний";
+    let ageStatus;
+    if (myAge >= 18) {
+        ageStatus = "совершеннолетний";
     } else {
-        message = "Вы несовершеннолетний";
+        ageStatus = "несовершеннолетний";
     }
     
-    // Вывод результата
-    const resultElement = document.getElementById('result1');
-    resultElement.innerHTML = `Имя: ${userName}\nВозраст: ${userAge}\n${message}`;
-    
     // Вывод в консоль
-    console.log("=== Задание 1 ===");
-    console.log(`Имя: ${userName}`);
-    console.log(`Возраст: ${userAge}`);
-    console.log(message);
+    console.log(`Меня зовут ${myName}`);
+    console.log(`Мне ${myAge} лет`);
+    console.log(`Вы ${ageStatus}`);
+    
+    // Вывод на страницу
+    const result1 = document.getElementById('result1');
+    result1.innerHTML = `Меня зовут ${myName}\nМне ${myAge} лет\nВы ${ageStatus}`;
+    
+    console.log(""); // Пустая строка для разделения
 }
 
 // Задание 2: Циклы
-function runTask2() {
-    // Очистка предыдущего результата
-    document.getElementById('result2').innerHTML = '';
+function task2() {
+    console.log("=== ЗАДАНИЕ 2 ===");
     
-    let result = "Цикл for от 1 до 10:\n";
+    let resultText = "";
     
     // 1. Цикл for от 1 до 10
+    console.log("Цикл for (числа от 1 до 10):");
+    resultText += "Цикл for (1-10): ";
     for (let i = 1; i <= 10; i++) {
-        result += i + " ";
+        console.log(i);
+        resultText += i + " ";
     }
     
-    result += "\n\nЦикл while от 10 до 1:\n";
+    console.log(""); // Разделитель
     
     // 2. Цикл while от 10 до 1
+    console.log("Цикл while (числа от 10 до 1):");
+    resultText += "\nЦикл while (10-1): ";
     let j = 10;
     while (j >= 1) {
-        result += j + " ";
+        console.log(j);
+        resultText += j + " ";
         j--;
     }
     
-    // Вывод результата
-    document.getElementById('result2').innerHTML = result;
+    // Вывод на страницу
+    const result2 = document.getElementById('result2');
+    result2.innerHTML = resultText;
     
-    // Вывод в консоль
-    console.log("=== Задание 2 ===");
-    console.log("Цикл for от 1 до 10:");
-    for (let i = 1; i <= 10; i++) {
-        console.log(i);
-    }
-    
-    console.log("Цикл while от 10 до 1:");
-    let k = 10;
-    while (k >= 1) {
-        console.log(k);
-        k--;
-    }
+    console.log(""); // Пустая строка для разделения
 }
 
 // Задание 3: Работа с массивами
-function runTask3() {
-    // Очистка предыдущего результата
-    document.getElementById('result3').innerHTML = '';
+function task3() {
+    console.log("=== ЗАДАНИЕ 3 ===");
     
-    let result = "";
+    let resultText = "";
     
     // 1. Создание массивов
-    const lectures = ['Тема 1', 'Тема 2', 'Тема 3'];
-    const practices = ['Практика 1', 'Практика 2', 'Практика 3'];
+    const lectures = ['Введение в JavaScript', 'Переменные и типы данных', 'Функции'];
+    const practices = ['Практика по переменным', 'Практика по условиям', 'Практика по циклам'];
     
-    result += "Исходные массивы:\n";
-    result += `Лекции: ${arrayToString(lectures)}\n`;
-    result += `Практики: ${arrayToString(practices)}\n\n`;
+    console.log("Исходные массивы:");
+    console.log("Лекции:", lectures);
+    console.log("Практики:", practices);
+    resultText += "Исходные массивы:\n";
+    resultText += `Лекции: ${arrayToCommaString(lectures)}\n`;
+    resultText += `Практики: ${arrayToCommaString(practices)}\n\n`;
     
     // 2. Добавление новых элементов
-    lectures.push('Тема 4');
-    practices.unshift('Практика 0');
+    lectures.push('Объекты и массивы');
+    practices.unshift('Вводная практика');
     
-    result += "Массивы после добавления элементов:\n";
-    result += `Лекции: ${arrayToString(lectures)}\n`;
-    result += `Практики: ${arrayToString(practices)}\n\n`;
+    console.log("\nПосле добавления элементов:");
+    console.log("Лекции:", lectures);
+    console.log("Практики:", practices);
+    resultText += "После добавления элементов:\n";
+    resultText += `Лекции: ${arrayToCommaString(lectures)}\n`;
+    resultText += `Практики: ${arrayToCommaString(practices)}\n\n`;
     
-    result += "Темы лекций:\n";
-    lectures.forEach(lecture => {
-        result += `- ${lecture}\n`;
+    // 3. Вывод с помощью forEach
+    console.log("\nТемы лекций (forEach):");
+    resultText += "Темы лекций:\n";
+    lectures.forEach((lecture, index) => {
+        console.log(`${index + 1}. ${lecture}`);
+        resultText += `${index + 1}. ${lecture}\n`;
     });
     
-    result += "\nПрактики:\n";
-    practices.forEach(practice => {
-        result += `- ${practice}\n`;
+    console.log("\nПрактические занятия (forEach):");
+    resultText += "\nПрактические занятия:\n";
+    practices.forEach((practice, index) => {
+        console.log(`${index + 1}. ${practice}`);
+        resultText += `${index + 1}. ${practice}\n`;
     });
     
-    // Вывод результата
-    document.getElementById('result3').innerHTML = result;
+    // Вывод на страницу
+    const result3 = document.getElementById('result3');
+    result3.innerHTML = resultText;
     
-    // Вывод в консоль
-    console.log("=== Задание 3 ===");
-    console.log("Темы лекций:");
-    lectures.forEach(lecture => console.log(lecture));
-    
-    console.log("Практики:");
-    practices.forEach(practice => console.log(practice));
+    console.log(""); // Пустая строка для разделения
 }
 
-// 4. Функция для вывода массива в строку
-function arrayToString(arr) {
+// 4. Функция для вывода массива в строку через запятую
+function arrayToCommaString(arr) {
     return arr.join(', ');
 }
 
 // Задание 4: Манипуляции с массивами
-function runTask4() {
-    // Очистка предыдущего результата
-    document.getElementById('result4').innerHTML = '';
+function task4() {
+    console.log("=== ЗАДАНИЕ 4 ===");
     
-    let result = "";
+    let resultText = "";
     
-    // 1. Функция для фильтрации тем, начинающихся на "О"
-    function filterTopicsStartingWithO(topics) {
-        return topics.filter(topic => topic.startsWith('О'));
+    // Функция для фильтрации тем, начинающихся на "О"
+    function filterTopicsStartingWithO(topicsArray) {
+        return topicsArray.filter(topic => 
+            topic.toLowerCase().startsWith('о')
+        );
     }
     
-    // 2. Пример использования
-    const lectureTopics = ['Основы HTML', 'Основы CSS', 'JavaScript', 'ООП', 'React'];
-    const filteredTopics = filterTopicsStartingWithO(lectureTopics);
+    // Пример использования
+    const allTopics = [
+        'Основы программирования',
+        'Операторы и выражения',
+        'Функции в JavaScript',
+        'Объекты',
+        'Массивы',
+        'Циклы',
+        'Обработка событий'
+    ];
     
-    result += "Исходный массив тем:\n";
-    result += arrayToString(lectureTopics) + "\n\n";
+    const topicsWithO = filterTopicsStartingWithO(allTopics);
     
-    result += "Темы, начинающиеся с 'О':\n";
-    result += arrayToString(filteredTopics);
+    console.log("Все темы:", allTopics);
+    console.log("Темы, начинающиеся на 'О':", topicsWithO);
     
-    // Вывод результата
-    document.getElementById('result4').innerHTML = result;
+    resultText += "Все темы:\n";
+    resultText += arrayToCommaString(allTopics) + "\n\n";
+    resultText += "Темы, начинающиеся на 'О':\n";
+    resultText += arrayToCommaString(topicsWithO);
     
-    // Вывод в консоль
-    console.log("=== Задание 4 ===");
-    console.log("Темы, начинающиеся с 'О':", filteredTopics);
+    // Вывод на страницу
+    const result4 = document.getElementById('result4');
+    result4.innerHTML = resultText;
+    
+    console.log("\n=== ВСЕ ЗАДАНИЯ ВЫПОЛНЕНЫ ===");
 }
+
+// Автоматически выполняем все задания при загрузке страницы
+document.addEventListener('DOMContentLoaded', function() {
+    console.log("Страница загружена. Нажмите кнопку 'Выполнить все задания' или откройте консоль (F12)");
+});
