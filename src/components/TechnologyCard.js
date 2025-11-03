@@ -19,6 +19,19 @@ function TechnologyCard({ title, description, status }) {
     return `technology-card status-${status}`;
   };
 
+  const getStatusDescription = () => {
+    switch (status) {
+      case 'completed':
+        return 'Технология полностью освоена';
+      case 'in-progress':
+        return 'Изучение в активной фазе';
+      case 'not-started':
+        return 'Еще не приступали к изучению';
+      default:
+        return '';
+    }
+  };
+
   return (
     <div className={getStatusClass()}>
       <div className="card-header">
@@ -27,6 +40,9 @@ function TechnologyCard({ title, description, status }) {
       </div>
       <div className="card-body">
         <p className="card-description">{description}</p>
+        <div className="status-info">
+          <span className="status-hint">{getStatusDescription()}</span>
+        </div>
       </div>
       <div className="card-footer">
         <div className="progress-indicator">
