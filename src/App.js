@@ -34,31 +34,47 @@ function App() {
       title: 'Event Handling', 
       description: 'Обработка событий в React', 
       status: 'not-started' 
+    },
+    { 
+      id: 6, 
+      title: 'React Hooks', 
+      description: 'Использование хуков для управления состоянием', 
+      status: 'not-started' 
     }
   ];
 
   return (
     <div className="App">
       <header className="app-header">
-        <h1>🚀 Трекер изучения технологий</h1>
-        <p>Отслеживайте ваш прогресс в изучении веб-разработки</p>
+        <div className="container">
+          <h1>🚀 Трекер изучения технологий</h1>
+          <p>Отслеживайте ваш прогресс в изучении веб-разработки</p>
+        </div>
       </header>
       
-      <ProgressHeader technologies={technologies} />
+      <div className="container">
+        <ProgressHeader technologies={technologies} />
+        
+        <main className="technologies-container">
+          <h2>Дорожная карта изучения</h2>
+          <div className="technologies-grid">
+            {technologies.map(tech => (
+              <TechnologyCard
+                key={tech.id}
+                title={tech.title}
+                description={tech.description}
+                status={tech.status}
+              />
+            ))}
+          </div>
+        </main>
+      </div>
       
-      <main className="technologies-container">
-        <h2>Дорожная карта изучения</h2>
-        <div className="technologies-grid">
-          {technologies.map(tech => (
-            <TechnologyCard
-              key={tech.id}
-              title={tech.title}
-              description={tech.description}
-              status={tech.status}
-            />
-          ))}
+      <footer className="app-footer">
+        <div className="container">
+          <p>© 2024 Трекер технологий. Практическое занятие 19.</p>
         </div>
-      </main>
+      </footer>
     </div>
   );
 }
