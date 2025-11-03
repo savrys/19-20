@@ -1,94 +1,196 @@
 .progress-header {
   background: white;
-  padding: 30px;
-  border-radius: 15px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-  margin-bottom: 30px;
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+  margin-bottom: 40px;
+  border: 1px solid #e9ecef;
+}
+
+.stats-overview {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.stats-overview h2 {
+  font-size: 2rem;
+  color: #2c3e50;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+.stats-overview p {
+  color: #7f8c8d;
+  font-size: 1.1rem;
 }
 
 .stats-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: 20px;
-  margin-bottom: 30px;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 25px;
+  margin-bottom: 40px;
 }
 
 .stat-card {
   text-align: center;
-  padding: 20px;
-  border-radius: 10px;
+  padding: 30px 20px;
+  border-radius: 15px;
   background: #f8f9fa;
-  transition: transform 0.3s ease;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.stat-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #667eea, #764ba2);
 }
 
 .stat-card:hover {
-  transform: translateY(-3px);
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.stat-card.total {
+  background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+  color: #2c3e50;
 }
 
 .stat-card.completed {
-  background: linear-gradient(135deg, #4CAF50, #45a049);
-  color: white;
+  background: linear-gradient(135deg, #d5f4e6, #c1e7d3);
+  color: #27ae60;
 }
 
 .stat-card.in-progress {
-  background: linear-gradient(135deg, #FF9800, #f57c00);
-  color: white;
+  background: linear-gradient(135deg, #fef5e7, #fdebd0);
+  color: #f39c12;
 }
 
 .stat-card.not-started {
-  background: linear-gradient(135deg, #F44336, #d32f2f);
-  color: white;
+  background: linear-gradient(135deg, #fdedec, #fadbd8);
+  color: #e74c3c;
+}
+
+.stat-icon {
+  font-size: 2.5rem;
+  margin-bottom: 15px;
 }
 
 .stat-number {
-  font-size: 2.5rem;
+  font-size: 2.8rem;
   font-weight: bold;
-  margin-bottom: 5px;
+  margin-bottom: 8px;
+  line-height: 1;
 }
 
 .stat-label {
-  font-size: 0.9rem;
+  font-size: 1rem;
+  font-weight: 600;
   opacity: 0.9;
 }
 
 .progress-section {
-  margin-top: 20px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 30px;
+  border-radius: 15px;
+  color: white;
 }
 
 .progress-info {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 10px;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.progress-text {
+  font-size: 1.2rem;
   font-weight: 600;
-  color: #333;
+}
+
+.progress-percentage {
+  font-size: 2rem;
+  font-weight: bold;
 }
 
 .progress-bar-container {
   width: 100%;
-  height: 12px;
-  background-color: #e0e0e0;
-  border-radius: 6px;
+  height: 16px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
   overflow: hidden;
+  margin-bottom: 10px;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .main-progress-bar {
   height: 100%;
-  background: linear-gradient(90deg, #4CAF50, #45a049);
-  border-radius: 6px;
-  transition: width 0.5s ease;
+  border-radius: 8px;
+  position: relative;
+  transition: width 1s ease-in-out;
+}
+
+.progress-fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(90deg, #ffffff, #f1f1f1);
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(255, 255, 255, 0.3);
+}
+
+.progress-details {
+  text-align: center;
+  font-size: 0.95rem;
+  opacity: 0.9;
 }
 
 @media (max-width: 768px) {
+  .progress-header {
+    padding: 25px;
+  }
+  
   .stats-grid {
     grid-template-columns: repeat(2, 1fr);
-    gap: 15px;
+    gap: 20px;
+  }
+  
+  .stat-card {
+    padding: 20px 15px;
   }
   
   .stat-number {
-    font-size: 2rem;
+    font-size: 2.2rem;
   }
   
-  .progress-header {
+  .stats-overview h2 {
+    font-size: 1.6rem;
+  }
+  
+  .progress-info {
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+  }
+  
+  .progress-percentage {
+    font-size: 1.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .progress-section {
     padding: 20px;
   }
 }
